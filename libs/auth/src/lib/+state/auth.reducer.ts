@@ -1,42 +1,36 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { createReducer, on, Action } from '@ngrx/store';
+import { AuthActions, AuthActionTypes } from './auth.actions';
+import { User } from '@demo/data-models';
 
-import * as AuthActions from './auth.actions';
-import { AuthEntity } from './auth.models';
-
-export const AUTH_FEATURE_KEY = 'auth';
-
-export interface AuthState extends EntityState<AuthEntity> {
-  selectedId?: string | number; // which Auth record has been selected
-  loaded: boolean; // has the Auth list been loaded
-  error?: string | null; // last known error (if any)
+export interface AuthData {
+  loading: boolean;
+  user: User | null;
+  error: '';
+}
+export interface AuthState {
+  readonly auth: AuthData;
 }
 
-export interface AuthPartialState {
-  readonly [AUTH_FEATURE_KEY]: AuthState;
-}
+export const initialState: AuthData = {
+  error: '',
+  user: null,
+  loading: false
+};
 
-export const authAdapter: EntityAdapter<AuthEntity> =
-  createEntityAdapter<AuthEntity>();
+export function authReducer(
+  state = initialState,
+  action: AuthActions
+): AuthData {
+  switch (action.type) {
+    case AuthActionTypes.Login:
+      return { ...state, loading: true };
 
-export const initialAuthState: AuthState = authAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
-
-const reducer = createReducer(
-  initialAuthState,
-  on(AuthActions.initAuth, (state) => ({
-    ...state,
-    loaded: false,
-    error: null,
-  })),
-  on(AuthActions.loadAuthSuccess, (state, { auth }) =>
-    authAdapter.setAll(auth, { ...state, loaded: true })
-  ),
-  on(AuthActions.loadAuthFailure, (state, { error }) => ({ ...state, error }))
-);
-
-export function authReducer(state: AuthState | undefined, action: Action) {
-  return reducer(state, action);
+    case AuthActionTypes.LoginSuccess: {
+      return { ...state, user: action.payload, loading: false };
+    }
+    case AuthActionTypes.LoginFail: {
+      return { ...state, user: null, loading: false };
+    }
+    default:
+      return state;
+  }
 }

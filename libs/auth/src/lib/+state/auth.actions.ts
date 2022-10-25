@@ -1,14 +1,24 @@
-import { createAction, props } from '@ngrx/store';
-import { AuthEntity } from './auth.models';
+import { Action } from '@ngrx/store';
+import { Authenticate, User } from '@demo/data-models';
 
-export const initAuth = createAction('[Auth Page] Init');
+export enum AuthActionTypes {
+  Login = '[Auth Page] Login',
+  LoginSuccess = '[Auth API] Login Success',
+  LoginFail = '[Auth API] Login Fail'
+}
 
-export const loadAuthSuccess = createAction(
-  '[Auth/API] Load Auth Success',
-  props<{ auth: AuthEntity[] }>()
-);
+export class Login implements Action {
+  readonly type = AuthActionTypes.Login;
+  constructor(public payload: Authenticate | null) {}
+}
+export class LoginSuccess implements Action {
+  readonly type = AuthActionTypes.LoginSuccess;
+  constructor(public payload: User) {}
+}
 
-export const loadAuthFailure = createAction(
-  '[Auth/API] Load Auth Failure',
-  props<{ error: any }>()
-);
+export class LoginFail implements Action {
+  readonly type = AuthActionTypes.LoginFail;
+  constructor(public payload: any) {}
+}
+
+export type AuthActions = Login | LoginSuccess | LoginFail;

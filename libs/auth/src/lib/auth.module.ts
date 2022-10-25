@@ -14,7 +14,7 @@ import * as fromAuth from './+state/auth.reducer';
 import { AuthEffects } from './+state/auth.effects';
 
 const COMPONENTS = [LoginComponent, LoginFormComponent];
-
+import { authReducer, initialState as authInitialState } from './+state/auth.reducer';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +22,7 @@ const COMPONENTS = [LoginComponent, LoginFormComponent];
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    StoreModule.forFeature(fromAuth.AUTH_FEATURE_KEY, fromAuth.authReducer),
+    StoreModule.forFeature('auth', authReducer, { initialState: authInitialState }),
     EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: [COMPONENTS],
@@ -33,6 +33,7 @@ const COMPONENTS = [LoginComponent, LoginFormComponent];
       useClass: AuthInterceptor,
       multi: true,
     },
+    AuthEffects
   ],
 })
 export class AuthModule {}

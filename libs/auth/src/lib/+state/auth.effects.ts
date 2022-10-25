@@ -1,27 +1,38 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
-
-import * as AuthActions from './auth.actions';
-import * as AuthFeature from './auth.reducer';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { AuthActionTypes } from './auth.actions';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { AuthService } from './../services/auth/auth.service';
+import * as authActions from './auth.actions';
+import { User } from '@demo/data-models';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
-  init$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.initAuth),
-      fetch({
-        run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return AuthActions.loadAuthSuccess({ auth: [] });
-        },
-        onError: (action, error) => {
-          console.error('Error', error);
-          return AuthActions.loadAuthFailure({ error });
-        },
-      })
+  @Effect()
+  login$ = this.actions$.pipe(
+    ofType(AuthActionTypes.Login),
+    mergeMap((action: authActions.Login) =>
+      this.authService
+        .login(action.payload)
+        .pipe(
+          map((user: User) => new authActions.LoginSuccess(user)),
+          catchError(error => of(new authActions.LoginFail(error)))
+        )
     )
   );
 
-  constructor(private readonly actions$: Actions) {}
+  @Effect({ dispatch: false })
+  navigateToProfile$ = this.actions$.pipe(
+    ofType(AuthActionTypes.LoginSuccess),
+    map((action: authActions.LoginSuccess) => action.payload),
+    tap(() => this.router.navigate([`/comics`]))
+  );
+
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 }

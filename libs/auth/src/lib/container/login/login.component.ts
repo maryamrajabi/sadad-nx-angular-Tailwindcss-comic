@@ -1,22 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Authenticate } from '@demo/data-models';
-import { AuthService } from '../../services/auth/auth.service';
-
+import { AuthState } from '@demo/auth';
+import { Store } from '@ngrx/store';
+import * as authActions from './../../+state/auth.actions';
 @Component({
-  selector: 'demo-login',
+  selector: 'demo-app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private authService: AuthService) {
-  }
-
-  ngOnInit(): void {
-  }
-
-  login(authenticate: Authenticate): void {
-    this.authService.login(authenticate).subscribe();
+  constructor(private store: Store<AuthState>) {}
+  login(authenticate: Authenticate) {
+    this.store.dispatch(new authActions.Login(authenticate));
   }
 }
