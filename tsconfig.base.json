@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@demo/auth": ["libs/auth/src/index.ts"],
+      "@demo/card": ["libs/card/src/index.ts"],
       "@demo/comics": ["libs/comics/src/index.ts"],
       "@demo/data-models": ["libs/data-models/src/index.ts"],
       "@demo/layout": ["libs/layout/src/index.ts"],

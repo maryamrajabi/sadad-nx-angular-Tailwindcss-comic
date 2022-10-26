@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "start": "nx serve",
+    "start": "nx serve --port 4242",
     "build": "nx build",
     "test": "nx test",
     "server": "ts-node ./server/server.ts"
@@ -29,6 +29,8 @@
     "@ngrx/router-store": "~14.0.0",
     "@ngrx/store": "~14.0.0",
     "@nrwl/angular": "15.0.2",
+    "dragula": "^3.7.3",
+    "marvel-api-hash-generator": "^1.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

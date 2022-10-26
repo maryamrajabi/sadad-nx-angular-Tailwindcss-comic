@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { authRoutes } from '../../../../libs/auth/src/lib/lib.routes';
+import { CardModule } from '@demo/card';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -26,8 +27,8 @@ import { authRoutes } from '../../../../libs/auth/src/lib/lib.routes';
         path: 'comics',
         loadChildren: () =>
           import('@demo/comics').then((mod) => mod.ComicsModule),
-        canActivate: [AuthGuard],
-      },
+        canActivate: [AuthGuard]
+      }
     ]),
     AuthModule,
     LayoutModule,
@@ -37,13 +38,14 @@ import { authRoutes } from '../../../../libs/auth/src/lib/lib.routes';
         metaReducers: !environment.production ? [] : [],
         runtimeChecks: {
           strictActionImmutability: true,
-          strictStateImmutability: true,
-        },
+          strictStateImmutability: true
+        }
       }
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot(),
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

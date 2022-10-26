@@ -14,6 +14,8 @@ import { FlexModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@demo/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardModule } from '@demo/card';
+// import { CardModule } from '@demo/card';
 
 @NgModule({
   imports: [
@@ -29,7 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
       }
     ),
     EffectsModule.forFeature([ComicsEffects]),
-    FlexModule
+    FlexModule,
+    CardModule
+    // CardModule
+    // CardModule
   ],
   declarations: [ComicsComponent, ComicListComponent],
 })

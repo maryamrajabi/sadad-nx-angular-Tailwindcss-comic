@@ -18,7 +18,7 @@ export class ComicsComponent implements OnInit {
               private store: Store<ComicsState>) {}
 
   ngOnInit() {
-    this.store.dispatch(new LoadComics());
-    this.comics$ = this.store.pipe(select(getComics));
+    // this.store.dispatch(new LoadComics());
+    // this.comics$ = this.store.pipe(select(getComics));
   }
 }
