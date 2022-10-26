@@ -1,7 +1,24 @@
-<div class="card">
-  <div class="card-title">{{ title }}</div>
-  <p class="card-content">
+<!--<div class="card">-->
+<!--  <div class="card-title">{{ title }}</div>-->
+<!--  <p class="card-content">-->
+<!--    <ng-content></ng-content>-->
+<!--  </p>-->
+<!--  <a class="flex self-end" [href]="url">Show me!</a>-->
+<!--</div>-->
+<div class='flex flex-col p-lg bg-secondary-light shadow-md hover:shadow-lg parent'>
+  <div class='flex flex-row'>
+    <img class='flex-1' [ngStyle]="{'maxHeight': '100px', 'maxWidth': '70px', 'marginRight': '10px'}" src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}">
+    <div class='pb-md text-lg font-bold flex-1'>{{ comic.title }}</div>
+  </div>
+  <p class='mb-xl flex-1'>
+    {{comic?.description?.length > 60 ? ((comic.description | slice:0:60) + '...') : comic.description}}
     <ng-content></ng-content>
   </p>
-  <a class="flex self-end" [href]="url">Show me!</a>
+  <a
+    class='py-sm px-md bg-primary-dark hover:bg-primary text-white flex self-end'
+    [href]="comic.urls[0].url"
+    target='_blank'
+  >
+    Show me!
+  </a>
 </div>

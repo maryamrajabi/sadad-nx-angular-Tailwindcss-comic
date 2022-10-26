@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { authRoutes } from '../../../../libs/auth/src/lib/lib.routes';
 import { CardModule } from '@demo/card';
+import { HeaderModule } from '@demo/header';
+import { LoadingModule } from '@demo/loading';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -45,7 +47,9 @@ import { CardModule } from '@demo/card';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot(),
-    CardModule
+    CardModule,
+    HeaderModule,
+    LoadingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

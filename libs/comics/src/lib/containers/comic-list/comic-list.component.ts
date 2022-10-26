@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Comic } from '@demo/data-models';
 import { ComicsService } from '../../services/comics/comics.service';
+import { LoadingService } from '../../../../../loading/src/lib/loading.service';
 
 @Component({
   selector: 'demo-comic-list',
@@ -21,11 +22,18 @@ export class ComicListComponent {
   comicList$: any;
 
 
-  constructor(private comicService: ComicsService) {
+  constructor(private comicService: ComicsService,
+              private loadingService: LoadingService) {
   }
 
   ngOnInit(): void {
-    this.comicService.getComics().subscribe(data => this.comicList$ = data.data.results)
+    this.loadingService.loadingChange(true);
+    this.comicService.getComics().subscribe(data => {
+      this.comicList$ = data.data.results;
+      this.loadingService.loadingChange(false);
+    }, () => {
+      this.loadingService.loadingChange(false);
+    })
   }
 
   openLink(link: string) {

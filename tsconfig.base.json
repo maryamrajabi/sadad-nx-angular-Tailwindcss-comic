@@ -19,7 +19,9 @@
       "@demo/card": ["libs/card/src/index.ts"],
       "@demo/comics": ["libs/comics/src/index.ts"],
       "@demo/data-models": ["libs/data-models/src/index.ts"],
+      "@demo/header": ["libs/header/src/index.ts"],
       "@demo/layout": ["libs/layout/src/index.ts"],
+      "@demo/loading": ["libs/loading/src/index.ts"],
       "@demo/material": ["libs/material/src/index.ts"]
     }
   },

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '@demo/data-models';
-import { AuthService } from '@demo/auth';
 
 @Component({
   selector: 'demo-layout',
@@ -10,17 +7,11 @@ import { AuthService } from '@demo/auth';
 })
 export class LayoutComponent implements OnInit {
 
-  user$: Observable<User> = new Observable<User>();
 
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.user$ = this.authService.user$;
-  }
-
-  logout() {
-    this.authService.logout();
   }
 
 }
