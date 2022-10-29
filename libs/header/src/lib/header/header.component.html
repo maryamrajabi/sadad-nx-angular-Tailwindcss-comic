@@ -1,7 +1,7 @@
 <mat-toolbar fxLayout="row" class='bg-primary-light shadow-md'>
-  <header class="px-xl py-md text-xl font-bold ">Angular + Tailwind CSS + Nx</header>
+  <header class="py-md text-xl font-bold ">Angular + Tailwind CSS + Nx</header>
 
-  <div class="right-nav">
+  <div class="right-nav px-xl py-md text-xl font-bold">
     <span *ngIf="user$ | async as user">
       <button mat-button>{{(user$ | async)?.name}}</button>
       <button mat-button [routerLink]="['/comics']" routerLinkActive="router-link-active">Comics</button>
