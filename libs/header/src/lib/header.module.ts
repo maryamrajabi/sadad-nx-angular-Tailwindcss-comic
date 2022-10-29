@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@demo/material';
 import { TranslateDemoModule } from '@demo/translate-demo';
 import { TranslateModule } from '@ngx-translate/core';
+import { RtlDirectiveModule } from '@demo/rtl';
 
 @NgModule({
-  imports: [CommonModule, FlexModule, RouterModule, MaterialModule, TranslateDemoModule, TranslateModule],
+  imports: [CommonModule, FlexModule, RouterModule, MaterialModule, TranslateDemoModule, TranslateModule, RtlDirectiveModule],
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
 })

@@ -1,7 +1,7 @@
-<mat-toolbar fxLayout='row' class='bg-primary-light shadow-md'>
-  <header class='py-md text-xl font-bold '> {{'header.Sitetitle' | translate }} </header>
+<mat-toolbar fxLayout='row' class='bg-primary-light shadow-md' rtl fxLayoutAlign="space-between center">
+  <header class="py-md text-xl font-bold"> {{'header.Sitetitle' | translate }} </header>
 
-  <div class='right-nav px-xl py-md text-xl font-bold'>
+  <div class='right-nav px-xl py-md text-xl font-bold' rtl>
     <span *ngIf='user$ | async as user'>
       <button mat-button>{{(user$ | async)?.name}}</button>
       <button mat-button [routerLink]="['/comics']" routerLinkActive='router-link-active'> {{'header.comics' | translate }} </button>

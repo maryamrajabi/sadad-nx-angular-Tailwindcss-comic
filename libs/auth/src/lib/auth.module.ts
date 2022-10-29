@@ -16,6 +16,7 @@ import { AuthEffects } from './+state/auth.effects';
 const COMPONENTS = [LoginComponent, LoginFormComponent];
 import { authReducer, initialState as authInitialState } from './+state/auth.reducer';
 import { TranslateModule } from '@ngx-translate/core';
+import { RtlDirectiveModule } from '@demo/rtl';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     StoreModule.forFeature('auth', authReducer, { initialState: authInitialState }),
     EffectsModule.forFeature([AuthEffects]),
-    TranslateModule
+    TranslateModule,
+    RtlDirectiveModule
   ],
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
