@@ -28,6 +28,8 @@
     "@ngrx/entity": "~14.0.0",
     "@ngrx/router-store": "~14.0.0",
     "@ngrx/store": "~14.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@nrwl/angular": "15.0.2",
     "dragula": "^3.7.3",
     "marvel-api-hash-generator": "^1.0.3",

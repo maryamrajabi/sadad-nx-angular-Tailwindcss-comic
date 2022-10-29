@@ -22,7 +22,9 @@
       "@demo/header": ["libs/header/src/index.ts"],
       "@demo/layout": ["libs/layout/src/index.ts"],
       "@demo/loading": ["libs/loading/src/index.ts"],
-      "@demo/material": ["libs/material/src/index.ts"]
+      "@demo/material": ["libs/material/src/index.ts"],
+      "@demo/translate": ["libs/translate/src/index.ts"],
+      "@demo/translate-demo": ["libs/translate-demo/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

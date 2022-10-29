@@ -1,0 +1,12 @@
+{
+  "header": {
+    "comics": "Comics",
+    "Sitetitle": "Angular + Tailwind CSS + Nx",
+    "logout" : "Logout",
+    "login": "Login",
+    "required-field": "Required Field",
+    "username": "username",
+    "password": "password",
+    "show-me": "Show me"
+  }
+}

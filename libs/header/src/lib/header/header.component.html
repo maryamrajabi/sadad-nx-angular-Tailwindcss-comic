@@ -1,14 +1,22 @@
-<mat-toolbar fxLayout="row" class='bg-primary-light shadow-md'>
-  <header class="py-md text-xl font-bold ">Angular + Tailwind CSS + Nx</header>
+<mat-toolbar fxLayout='row' class='bg-primary-light shadow-md'>
+  <header class='py-md text-xl font-bold '> {{'header.Sitetitle' | translate }} </header>
 
-  <div class="right-nav px-xl py-md text-xl font-bold">
-    <span *ngIf="user$ | async as user">
+  <div class='right-nav px-xl py-md text-xl font-bold'>
+    <span *ngIf='user$ | async as user'>
       <button mat-button>{{(user$ | async)?.name}}</button>
-      <button mat-button [routerLink]="['/comics']" routerLinkActive="router-link-active">Comics</button>
-      <button mat-button [routerLink]="['/auth/login']" (click)="logout()">Logout</button>
+      <button mat-button [routerLink]="['/comics']" routerLinkActive='router-link-active'> {{'header.comics' | translate }} </button>
+      <button mat-button [routerLink]="['/auth/login']" (click)='logout()'>{{'header.logout' | translate }}</button>
     </span>
-    <span *ngIf="!(user$ | async)">
-      <span mat-button [routerLink]="['/auth/login']" routerLinkActive="router-link-active">Login</span>
+    <span *ngIf='!(user$ | async)'>
+      <span mat-button [routerLink]="['/auth/login']" routerLinkActive='router-link-active'>{{'header.login' | translate }}</span>
+    </span>
+    <span class='inline-block px-xl'>
+      <select class='form-control ' #selectedLang (change)='switchLang(selectedLang.value)'>
+        <option *ngFor='let language of translate.getLangs()' [value]='language'
+                [selected]='language === translate.currentLang'>
+          {{ language }}
+        </option>
+      </select>
     </span>
   </div>
 </mat-toolbar>

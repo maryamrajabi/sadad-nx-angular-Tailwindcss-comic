@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '@demo/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from '@demo/card';
+import { TranslateModule } from '@ngx-translate/core';
 // import { CardModule } from '@demo/card';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CardModule } from '@demo/card';
     ),
     EffectsModule.forFeature([ComicsEffects]),
     FlexModule,
-    CardModule
+    CardModule,
+    TranslateModule
     // CardModule
     // CardModule
   ],
