@@ -12,13 +12,6 @@ export class ComicListComponent {
 
   @Input() comics: Comic[] = [];
   @Output() filter = new EventEmitter<string>();
-
-  // onFilter(category: string) {
-  //   this.filter.emit(category);
-  // }
-
-
-  // features: Feature[] = features;
   comicList$: any;
 
 

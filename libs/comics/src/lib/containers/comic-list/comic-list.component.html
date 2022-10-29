@@ -1,16 +1,3 @@
-<!--<mat-card>-->
-<!--  <mat-nav-list *ngFor="let comic of comicList$" fxLayout="row" fxLayoutGap='20px'>-->
-<!--    <div fxFlex="20">-->
-<!--      <img [ngStyle]="{'maxHeight': '200px', 'maxWidth': '100px'}" src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}">-->
-<!--    </div>-->
-<!--    <div fxFlex='80' fxLayout="column">-->
-<!--      <a mat-list-item  (click)="openLink(comic.urls[0].url)">{{comic.title}}</a>-->
-<!--<p>{{comic.description}}</p>-->
-<!--    </div>-->
-<!--  </mat-nav-list>-->
-<!--</mat-card>-->
-
-
 <main
   class='max-w-xl md:max-w-2xl lg:max-w-6xl mx-auto py-xl px-md md:px-xl grid grid-cols-1 gap-md md:grid-cols-2 lg:grid-cols-3'>
   <demo-card *ngFor="let comic of comicList$" [comic]='comic'></demo-card>
