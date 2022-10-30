@@ -7,9 +7,11 @@ import { MaterialModule } from '@demo/material';
 import { TranslateDemoModule } from '@demo/translate-demo';
 import { TranslateModule } from '@ngx-translate/core';
 import { RtlDirectiveModule } from '@demo/rtl';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  imports: [CommonModule, FlexModule, RouterModule, MaterialModule, TranslateDemoModule, TranslateModule, RtlDirectiveModule],
+  imports: [CommonModule, FlexModule, BrowserModule, BrowserAnimationsModule, RouterModule, MaterialModule, TranslateDemoModule, TranslateModule, RtlDirectiveModule],
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
 })

@@ -1,12 +1,14 @@
 {
   "header": {
     "comics": "کمدی ها",
-    "Sitetitle": "Angular + Tailwind CSS + Nx",
+    "Sitetitle": "Angular + Tailwind CSS + Nx + NGRX",
     "logout" : "خروج",
     "login": "ورود",
     "required-field": "فیلد اجباری",
     "username": "نام کاربری",
     "password": "رمز عبور",
-    "show-me": "نمایش"
+    "show-me": "نمایش",
+    "light": "روشن",
+    "dark": "تیره"
   }
 }

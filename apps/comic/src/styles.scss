@@ -1,6 +1,32 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './app/app.component.scss-theme';
+@import './libs/header/src/lib/header/header.component.scss-theme';
+
+@import './themes/light-theme';
+@import './themes/black-theme';
+
+@mixin custom-components-theme($theme) {
+  @include app-component-theme($theme);
+  @include header-component-theme($theme);
+}
+
+.light-theme {
+  @include mat.all-component-themes($demo-light-theme);
+  @include custom-components-theme($demo-light-theme);
+}
+
+.black-theme {
+  @include mat.all-component-themes($demo-black-theme);
+  @include custom-components-theme($demo-black-theme);
+}
+
 
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
